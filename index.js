@@ -1,12 +1,15 @@
 ﻿
 // Import the discord.js module
 const Discord = require('discord.js');
-const { prefix, token } = require('./config.json');
+const { prefix } = require('./config.json');
+
+// To use the KINGCHAMP_TOKEN, the system running the bot client needs to have that environment variable set to the bot token.
+const token = process.env.KINGCHAMP_TOKEN
 // Create an instance of a Discord client
 const client = new Discord.Client();
 
 const ytdl = require('ytdl-core');
-var playing = false;
+let playing = false;
 /**
  * The ready event is vital, it means that only _after_ this will your bot start reacting to information
  * received from Discord
