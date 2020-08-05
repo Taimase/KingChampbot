@@ -132,7 +132,7 @@ Unused functional avatar command
 
         // ...
 
-        
+
     } else if (command === 'join') { //voice commands start from here on
         if (message.member.voice.channel) { //join voice channel
             const connection = await message.member.voice.channel.join();
@@ -187,7 +187,7 @@ Unused functional avatar command
             console.log('audio.mp3 has finished playing!');
         });
 
-        
+
         dispatcher.on('error', console.error);
 
         //the play commmand allows you to play any youtube video but it is also
@@ -211,7 +211,7 @@ Unused functional avatar command
             playing = true;
         }
 
-        
+
     } else if (command === 'dm') { //this command dms the target user some crap
         if (!message.mentions.users.size) {
             return message.channel.send("no target was given");
@@ -228,7 +228,7 @@ Unused functional avatar command
         channel.messages.fetch({ limit: 2 }).then(messages => { //it gets one message higher than the users command message
             let lastMessage = messages.last();
 
-            
+
             if (!lastMessage.author.bot) {
                 // if The author of the last message wasn't a bot
 
@@ -318,7 +318,7 @@ Unused functional avatar command
         replyWithInvite(message, target); //calls function
 
 
-        async function replyWithInvite(message, target) { 
+        async function replyWithInvite(message, target) {
             let invite = await message.channel.createInvite( //creation of the invite
                 {
                     maxAge: 500, // maximum time for the invite, in milliseconds
@@ -371,16 +371,28 @@ Unused functional avatar command
     } else if (command === 'bit') { //bit command nothing fancy
         message.channel.send('https://cdn.discordapp.com/attachments/641376848726720522/739657206215213106/bit.png');
 
-        
+
         let bitTextOptions = [
             'What :question: an imbecile :man_facepalming: :woman_facepalming:. It appears :eyes:  you have failed :x: to get :person_raising_hand:  this extremely high :arrow_heading_up:  level humor known as a bit :rofl: . OP crafted :hammer:  a hilarious :laughing:  inside joke that you clearly didn\'t grasp. Don\'t take it personal king :crown:, it takes a very complex :muscle: mind :brain:  to comprehend :exploding_head:  such nuance :question:  and subtlety. I will now take a screenshot :camera:  on my computer and post :post_office: this conversation on the subreddit known as r/woooosh where I will surely get reddit guilds :money_mouth:  and can redeem my reddit premium subscription.',
-            'Please have mercy King! OP\'s intent for their original message was one of humor and sarcasm as opposed to an expression of their actual opinion. You may laugh now Kings.' 
+            'Please have mercy King! OP\'s intent for their original message was one of humor and sarcasm as opposed to an expression of their actual opinion. You may laugh now Kings.'
         ];
-        
+
         message.channel.send(bitTextOptions[getRandomInt(bitTextOptions.length - 1)]);
 
     } else if (command === 'hello') { //stupid command nothing fancy. You can add || around text like this || to add spoilers
         message.channel.send('What the f||rick|| did you just f||ricking|| say about me, you little b||uster||? I\'ll have you know I graduated top of my class in the Navy Seals, and I\'ve been involved in numerous secret raids on Al-Quaeda, and I have over 300 confirmed kills. I am trained in gorilla warfare and I\'m the top sniper in the entire US armed forces.You are nothing to me but just another target. I will wipe you the f||rick|| out with precision the likes of which has never been seen before on this Earth, mark my f||rick||ing words.You think you can get away with saying that s||hrek|| to me over the Internet ? Think again, f||rick||er.As we speak I am contacting my secret network of spies across the USA and your IP is being traced right now so you better prepare for the storm, maggot.The storm that wipes out the pathetic little thing you call your life.You\'re f||rick||ing dead, kid. I can be anywhere, anytime, and I can kill you in over seven hundred ways, and that\'s just with my bare hands.Not only am I extensively trained in unarmed combat, but I have access to the entire arsenal of the United States Marine Corps and I will use it to its full extent to wipe your miserable a||donkey|| off the face of the continent, you little s||crap|| .If only you could have known what unholy retribution your little "clever" comment was about to bring down upon you, maybe you would have held your f||rick||ing tongue.But you couldn\'t, you didn\'t, and now you\'re paying the price, you g||stupid||mn idiot. I will send fury all over you and you will drown in it. You\'re f||rick||ing dead, kiddo.');
+    } else if (command === 'poggers') {
+        message.channel.send('This do be a gamer moment');
+        /*
+         <:PogChamp:701657226984685639>
+        <:MassivePog:701659668963000320>
+        <:poggers:729112522086416396>
+         
+          */
+        message.react('701657226984685639');
+        message.react('701659668963000320');
+        message.react('729112522086416396');
+        message.channel.send('<:PogChamp:701657226984685639><:PogChamp:701657226984685639><:PogChamp:701657226984685639><:PogChamp:701657226984685639><:PogChamp:701657226984685639>');
     }
 
     
@@ -432,4 +444,4 @@ function getRandomInt(max) {
 
 
 
-client.login(token); //Where the token is recieved from config.js
+client.login(token);
