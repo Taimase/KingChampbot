@@ -416,7 +416,8 @@ Unused functional avatar command
             'If I Were White And Not Will Smith\'s """""SILLY""""" Son I Would Be The Most Respected Philosopher Of Our And All Time.',
             'Friends are like birds, they die if you kill them.',   
         ];
-
+        message.channel.send('You got it King, polling local 14 year olds for deep quotes.');
+        message.channel.send('--------------------------------------------------------------------')
         message.channel.send(deepTextOptions[getRandomInt(deepTextOptions.length - 1)]);
     }
 
