@@ -393,6 +393,31 @@ Unused functional avatar command
         message.react('701659668963000320');
         message.react('729112522086416396');
         message.channel.send('<:PogChamp:701657226984685639><:PogChamp:701657226984685639><:PogChamp:701657226984685639><:PogChamp:701657226984685639><:PogChamp:701657226984685639>');
+    } else if (command === 'deep') { //copypastas from r/im14andthisisdeep
+        let deepTextOptions = [
+            'Maybe humans are the real virus',
+            'sHE\'s brOKen',
+            'First you learn to read. Then you read to learn',
+            'I want a Nokia but society won\t let me',
+            'Remember, when you point a finger at someone there are three more pointing back at you',
+            'Girl: as soon as I can \n \n Boy: will you ever leave me \n \n Girl: no are you crazy? \n \n Boy: do you love me? \n \n Girl: yes alot \n \n Boy: have you ever cheated on me \n \n Girl: no never \n \n Boy: will you ever kiss me? \n \n Girl: every chance I get \n \n Boy: will you ever hit me \n \n Girl: definitely not \n \n Boy: can I trust you? \n \n Girl: yes \n \n Boy: Babe \n \n now read it backwards',
+            'Sugar and Salt look almost same. \n Be Careful of Whom You Trust...',
+            'A salary is a bribe they give you to forget your dreams',
+            'The most expensive liquid in the world is a tear. It is 1% water and 99% feelings. \n Think before you hurt someone.',
+            'Police: why are you here? \n \n Someone: I am being abuse \n \n Police: what\'s your name \n \n Someone: Mother Earth \n \n Police: who abused u? \n \n Mother Earth: Humans. \n \n 1 like = 10 trees to save earth :tree:',
+            'https://cdn.discordapp.com/attachments/621499352300519455/742082515967410216/d256ad2.jpg',
+            'Every smoker has a story so before you tell them smoking kills, I want you to know that something is already killing them.',
+            'we all got arrested for being born and sent to prison until wer 18 that prison is call "school"',
+            '-Grab a plate and throw it on the floor \n -Okay done. \n -Did it break? \n -Yes. \n -Now say sorry to it. \n -Sorry \n -Did it go back to how it was before? \n -No. \n -Do you understand?',
+            'Doctor: On a scale of 1 to 10 how bad is your pain \n Man: π \n Doctor: π? \n Man: Yeah. Low level but never ending.',
+            'Did you know ? \n *80%* of boys have girlfriends \n Rest 20% have *brain*.',
+            'If There Is Bread Winners, There Is Bread Losers. But You Can\'t Toast What Isn\'t Real. #BreadPeopleLives',
+            'OMG so I just figured out the word "hurt" \n it\'s past present and future \n you will be ***hurt*** \n you are ***hurt*** \n you were ***hurt*** \n **BECAUSE IF SOMETHING TRULY HURT, IT NEVER REALLY STOPS** \n \n it\'s because it\'s an adjective... \n you will be ***stupid*** \n you are ***stupid*** \n you were ***stupid***',
+            'If I Were White And Not Will Smith\'s """""SILLY""""" Son I Would Be The Most Respected Philosopher Of Our And All Time.',
+            'Friends are like birds, they die if you kill them.',   
+        ];
+
+        message.channel.send(deepTextOptions[getRandomInt(deepTextOptions.length - 1)]);
     }
 
     
