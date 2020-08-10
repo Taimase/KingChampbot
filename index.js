@@ -404,7 +404,7 @@ Unused functional avatar command
             'Sugar and Salt look almost same. \n Be Careful of Whom You Trust...',
             'A salary is a bribe they give you to forget your dreams',
             'The most expensive liquid in the world is a tear. It is 1% water and 99% feelings. \n Think before you hurt someone.',
-            'Police: why are you here? \n \n Someone: I am being abuse \n \n Police: what\'s your name \n \n Someone: Mother Earth \n \n Police: who abused u? \n \n Mother Earth: Humans. \n \n 1 like = 10 trees to save earth :tree:',
+            'Police: why are you here? \n \n Someone: I am being abuse \n \n Police: what\'s your name \n \n Someone: Mother Earth \n \n Police: who abused u? \n \n Mother Earth: Humans. \n \n 1 like = 10 trees to save earth 🌲',
             'https://cdn.discordapp.com/attachments/621499352300519455/742082515967410216/d256ad2.jpg',
             'Every smoker has a story so before you tell them smoking kills, I want you to know that something is already killing them.',
             'we all got arrested for being born and sent to prison until wer 18 that prison is call "school"',
@@ -416,7 +416,7 @@ Unused functional avatar command
             'If I Were White And Not Will Smith\'s """""SILLY""""" Son I Would Be The Most Respected Philosopher Of Our And All Time.',
             'Friends are like birds, they die if you kill them.',
         ];
-        message.channel.send('You got it King, polling local 14 year olds for deep quotes.');
+        message.channel.send('You got it King, polling 14 year olds on the internet for some deep quotes.');
         message.channel.send('--------------------------------------------------------------------')
         message.channel.send(deepTextOptions[getRandomInt(deepTextOptions.length - 1)]);
     } else if (command === 'blursed') {
