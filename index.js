@@ -2,7 +2,7 @@
 // Import the discord.js module
 const Discord = require('discord.js');
 const { prefix } = require('./config.json');
-
+const fetch = require("node-fetch");
 // To use the KINGCHAMP_TOKEN, the system running the bot client needs to have that environment variable set to the bot token.
 const token = process.env.KINGCHAMP_TOKEN
 // Create an instance of a Discord client
@@ -414,11 +414,15 @@ Unused functional avatar command
             'If There Is Bread Winners, There Is Bread Losers. But You Can\'t Toast What Isn\'t Real. #BreadPeopleLives',
             'OMG so I just figured out the word "hurt" \n it\'s past present and future \n you will be ***hurt*** \n you are ***hurt*** \n you were ***hurt*** \n **BECAUSE IF SOMETHING TRULY HURT, IT NEVER REALLY STOPS** \n \n it\'s because it\'s an adjective... \n you will be ***stupid*** \n you are ***stupid*** \n you were ***stupid***',
             'If I Were White And Not Will Smith\'s """""SILLY""""" Son I Would Be The Most Respected Philosopher Of Our And All Time.',
-            'Friends are like birds, they die if you kill them.',   
+            'Friends are like birds, they die if you kill them.',
         ];
         message.channel.send('You got it King, polling local 14 year olds for deep quotes.');
         message.channel.send('--------------------------------------------------------------------')
         message.channel.send(deepTextOptions[getRandomInt(deepTextOptions.length - 1)]);
+    } else if (command === 'blursed') {
+
+        postRandommeme(message);
+
     }
 
     
@@ -464,10 +468,49 @@ function getRandomInt(max) {
 
 
 
+/*
+function loadmemes(message) {
+    fetch('https://www.reddit.com/r/memeswithoutmods.json?limit=800&?sort=hot&t=all')
+        .then(res => res.json())
+        .then(json => json.data.children.map(v => v.data.url))
+        .then(urls => postRandommeme(urls, message));
+}
 
+function postRandommeme(urls, message) {
+    const randomURL = urls[Math.floor(Math.random() * urls.length) + 1];
+    const embed = new Discord.MessageEmbed({
+        image: {
+            url: randomURL
+        }
+    });
+    message.channel.send(embed);
+}
 
+*/
+function loadmemes() {
+    // Fetch JSON
+    return fetch('https://www.reddit.com/r/blursedimages.json?limit=800&?sort=hot&t=all')
+        .then(res => res.json())
+        // Return the actual posts
+        .then(json => json.data.children);
 
+   
+}
 
+function postRandommeme(message) {
+    return loadmemes().then(posts => {
+        // Get a random post's title and URL
+        const { title, url } = posts[Math.floor(Math.random() * posts.length)].data;
+        // Create the embed
+        const embed = new Discord.MessageEmbed({
+            title,
+            image: { url },
+            //footer: { text: 'Subreddit : r/memes' }
+        });
+        // Send the embed
+        return message.channel.send(embed);
+    })
+}
 
 
 client.login(token);
