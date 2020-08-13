@@ -423,6 +423,18 @@ Unused functional avatar command
 
         postRandommeme(message);
 
+    } else if (command === 'poll') {
+
+        var mystring = args.slice(0).toString();//This adds commas and stuff between the message
+        ;
+        var newchar = ' '
+        mystring = mystring.split(',').join(newchar);
+
+        let sent = await message.channel.send(`@everyone Alright Kings! vote on ${mystring}!`); // this returns the message you just sent
+       
+
+        sent.react('👍');
+       sent.react('👎');
     }
 
     
