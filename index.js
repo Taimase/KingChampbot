@@ -16,6 +16,15 @@ let playing = false;
  */
 client.on('ready', () => {
     console.log(`Logged in as ${client.user.tag}!`); 
+
+
+    //bots cannot set custom status unfortunatly so I have this code instead
+
+    //if bots ever get the ability to set custom status than it should have the status: "Serving kings and posting memes"
+
+    client.user.setActivity('Shower Cam 3', { type: 'WATCHING' });
+
+
 });
 client.on('guildMemberAdd', (guildMember) => {
 const role = guildMember.guild.roles.cache.find(role => role.name === 'Gaming');
@@ -115,7 +124,7 @@ Unused functional avatar command
 
     //  prune/mass delete command
     //add else ifs like these to add more commands
-    if (command === 'prune') {
+    if (command === 'prune' || command == 'purge') {
         const amount = parseInt(args[0]) + 1;
 
         if (isNaN(amount)) {
@@ -431,10 +440,12 @@ Unused functional avatar command
         mystring = mystring.split(',').join(newchar);
 
         let sent = await message.channel.send(`@everyone Alright Kings! vote on ${mystring}!`); // this returns the message you just sent
-       
+
 
         sent.react('👍');
-       sent.react('👎');
+        sent.react('👎');
+    } else if (command === 'monkey') {
+        message.channel.send("OOOOOOOH OOOOOOOOOH AHHHHH AHHH MONKEY MONKEY I AM THE MONEY MAN. FEED ME BANNANANANS MONEKY AHHH HEL P I \" m HAVing a Strock");
     }
 
     
