@@ -171,7 +171,7 @@ Unused functional avatar command
         dispatcher.on('error', console.error);
 
 
-    } else if (command === 'target') { //this is the best Kinchamp command. target a user by going |target @username and kingchamp will join their voice channel and blow out their ears.
+    } else if (command === 'target') { //this is the best Kingchamp command. target a user by going |target @username and kingchamp will join their voice channel and blow out their ears.
         if (!message.mentions.users.size) {
             return message.channel.send("no target was given");
         }
@@ -186,7 +186,7 @@ Unused functional avatar command
         const connection = await targetChannel.join();
 
         const stream = ytdl('https://www.youtube.com/watch?v=xrx2v-SHT5g', { filter: 'audioonly' });
-        const dispatcher = connection.play(stream); //play the music
+        const dispatcher = connection.play("music/slide.mp3"); //play the music
 
         dispatcher.on('start', () => {
             console.log('audio.mp3 is now playing!');
@@ -248,7 +248,7 @@ Unused functional avatar command
                 var cringe = 0; //this is the cringe variable that determines how cringe the message is
                 var fortnite = false;
                 var image = false;
-                if (target.user.username === 'Taimase' || target.user.username === 'Blwaze' || target.user.username === 'Dylgib') { //if the message is sent by me andrew or dillan the message is automatically given +1 cringe
+                if (target.user.username === 'Taimase' || target.user.username === 'Blwaze' || target.user.username === 'Dylgib') { //if the message is sent by me andrew or dylan the message is automatically given +1 cringe
                     cringe += 1;
                 } //cringe key words are here. If you want to add more words just copy and paste this code
                 if (lastMessage.content.includes('cringe') || lastMessage.content.includes('Cringe')) {
