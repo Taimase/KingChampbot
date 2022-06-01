@@ -1,10 +1,10 @@
-﻿
+
 // Import the discord.js module
 const Discord = require('discord.js');
 const { prefix } = require('./config.json');
 const fetch = require("node-fetch");
 // To use the KINGCHAMP_TOKEN, the system running the bot client needs to have that environment variable set to the bot token.
-const token = process.env.KINGCHAMP_TOKEN
+const token = process.env.KINGCHAMP_TOKEN //process.env.KINGCHAMP_TOKEN
 // Create an instance of a Discord client
 const client = new Discord.Client();
 
@@ -141,7 +141,9 @@ Unused functional avatar command
 
         // ...
 
+   
 
+    
     } else if (command === 'join') { //voice commands start from here on
         if (message.member.voice.channel) { //join voice channel
             const connection = await message.member.voice.channel.join();
@@ -186,7 +188,7 @@ Unused functional avatar command
         const connection = await targetChannel.join();
 
         const stream = ytdl('https://www.youtube.com/watch?v=xrx2v-SHT5g', { filter: 'audioonly' });
-        const dispatcher = connection.play("music/slide.mp3"); //play the music
+        const dispatcher = connection.play(stream); //play the music
 
         dispatcher.on('start', () => {
             console.log('audio.mp3 is now playing!');
@@ -199,28 +201,51 @@ Unused functional avatar command
 
         dispatcher.on('error', console.error);
 
-        //the play commmand allows you to play any youtube video but it is also
-    } else if (command === 'play') { //the command most likely to crash the bot. if you wish for kingchamp to be sustainable either remove this command or make it so it doesn't crash when invalid input is given
-        if (message.member.voice.channel) {
-            message.channel.send(`attempting to play music`);
-            const stream = ytdl(args[0], { filter: 'audioonly' }); //where the bot is givin input through the args array. the input MUST be a valid youtube link
-            const connection = await message.member.voice.channel.join();
-            //const dispatcher = connection.play('C:/Users/utili/Desktop/Programmingandsideprojects/DiscordBot/music/slide.mp3'); //this is test input
-            const dispatcher = connection.play(stream);
-            dispatcher.on('start', () => {
-                console.log('audio.mp3 is now playing!');
-            });
+        
+    //Plays youtube links. I spent about 2 hours (yikes) fixing the code and after watching some video in spanish I finally figured it all out and it shouldn't crash.
+    } else if (command === 'play') { 
+        let url = args[0]; // confirms there is a content after command
+        if(!url) {
+            message.channel.send('King, there is nothing there.')
+            console.log('Empty content')
+            
+            } else { // this is kind of messy imo, but it gets the job done
+                
+                let verify = await ytdl.validateURL(url); //verifys its a valid youtube link
+                if(verify === true) {
+                if (message.member.voice.channel) {
+                    message.channel.send(`attempting to play music`);
+                    const stream = ytdl(args[0], { filter: 'audioonly' }); //where the bot is givin input through the args array. the input MUST be a valid youtube link
+                    const connection = await message.member.voice.channel.join();
+                    //const dispatcher = connection.play('C:/Users/utili/Desktop/Programmingandsideprojects/DiscordBot/music/slide.mp3'); //this is test input
+                    const dispatcher = connection.play(stream);
+                    dispatcher.on('start', () => {
+                
+                    console.log('audio.mp3 is now playing!');
+                });
 
-            dispatcher.on('finish', () => {
-                console.log('audio.mp3 has finished playing!');
-            });
+                dispatcher.on('finish', () => {
+                    console.log('audio.mp3 has finished playing!');
+                });
 
             // this error catcher doesn't work the way I thought it would
             dispatcher.on('error', console.error)
             playing = true;
+            } else { 
+                message.channel.send('Where we dropping king?')
+            }
+
+            
         }
+         else {
+             console.log('Invalid link')
+            message.channel.send('King, that is not a valid youtube link and I will actually die if I even attempt to play that.')
+        }
+    }
 
+    } else if (command === 'stop') {
 
+    
     } else if (command === 'dm') { //this command dms the target user some crap
         if (!message.mentions.users.size) {
             return message.channel.send("no target was given");
@@ -268,15 +293,22 @@ Unused functional avatar command
                     cringe += 2;
                 }
                 if (lastMessage.content.includes('epic') || lastMessage.content.includes('Epic')) {
-                    cringe += 2;
+                    cringe += 1;
                 }
                 if (lastMessage.content.includes('moment') || lastMessage.content.includes('Moment')) {
-                    cringe += 2;
+                    cringe += 1;
+                }
+                if (lastMessage.content.includes('epic') || lastMessage.content.includes('Epic') && lastMessage.content.includes('moment') || lastMessage.content.includes('Moment') ) { 
+                    cringe += 3;
                 }
 
                 if (lastMessage.content.includes('fortnite') || lastMessage.content.includes('Fortnite')) { //if message contains fortnite the bot changes its message
                     fortnite = true;
                     cringe += 3;
+                }
+
+                if (lastMessage.content.includes('bruh') || lastMessage.content.includes('Bruh')) { 
+                    cringe += 2;
                 }
 
                 if (lastMessage.attachments.size > 0) { //if their is an image the message is marked as cringe
